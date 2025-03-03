@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>section layout</title>
+
+
+    <style>
+        * {
+            
+            box-sizing: border-box;
+            
+        }
+
+h1{
+    font-size: 6vw ; background: #60cfbd; text-align: center ;
+}
+ body{
+    background: #5f98d6c0;
+ }
+
+       h2{
+        text-align: center;
+       }
+
+        #left {
+            background: #ef6b06;
+            padding: 20px;
+            float: left;
+            width: 33%;
+           
+
+        }
+
+        #center {
+            background: #ffffff;
+            padding: 20px;
+            float: left;
+            width: 34%;
+
+
+        }
+
+        #right {
+            background: #04b71f;
+            padding: 20px;
+            float: left;
+            width: 33%;
+
+
+        }
+
+        @media (max-width: 800px) {
+
+            #left,
+            #center,
+            #right {
+                width: 100%;
+                height: auto;
+
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Section Layout</h1>
+
+    <hr>
+    <div id="left">
+        <h2>Bharat</h2>
+    </div>
+
+    <div id="center" style="color: #3e1edc;">
+        <h2>Mataki</h2>
+    </div>
+
+    <div id="right">
+        <h2>Jay</h2>
+    </div>
+
+
+
+<hr>
+
+
+</body>
+
+</html>

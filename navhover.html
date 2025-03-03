@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Underline or Border on Hover</title>
+  <style>
+    /* Basic styling for the navigation */
+    nav {
+      position: absolute;
+      top: 4px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    ul {
+      display: flex;
+      padding: 0;
+      margin: 0;
+      list-style-type: none;
+      position: relative;
+    }
+
+    ul li {
+      padding: 15px;
+      position: relative;
+    }
+
+    ul li a {
+      text-decoration: none;
+      color: black;
+      display: block;
+    }
+
+    /* Create the underline (or border) with ::after */
+    ul li::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 3;
+      width: 0; /* Initially no width */
+      height: 2px; /* Border thickness */
+      background-color: black;
+      /* Animate width expansion */
+    }
+
+    /* On hover, expand the underline/border */
+    ul li:hover::after {
+      width: 70%; /* Expand to the full width of the li */
+    }
+
+    /* Optional: Hover effect for the links (text color change) */
+    ul li a:hover {
+      color: blue; /* Change text color on hover */
+    }
+
+  </style>
+</head>
+<body>
+
+  <nav>
+    <ul>
+      <li><a href="#">HOME</a></li>
+      <li><a href="#">ABOUT</a></li>
+      <li><a href="#">CONTACT</a></li>
+    </ul>
+  </nav>
+
+</body>
+</html>

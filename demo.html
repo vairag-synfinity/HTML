@@ -1,0 +1,131 @@
+<!doctype html>
+
+
+    
+    
+ 
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .login-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+            width: 250px;
+            animation: fadeIn 1s ease-out;
+        }
+           @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        h2 {
+            text-align: center;
+        }
+        .input-field {
+            width: 90%;
+            padding: 15px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .login-btn {
+            width: 103%;
+            padding: 20px;
+            background-color:#ff0909;
+            color: white;
+            border: none;
+            font-size: 22px;
+            border-radius: 5px;
+             margin: 14px 0;
+            cursor: pointer;
+        }
+        .login-btn:hover {
+            background-color: #45a049;
+        }
+        .error-msg {
+            color: red;
+            font-size: 14px;
+            text-align: center;
+        }
+    </style>
+
+
+
+<div class="login-container">
+    <h2>Hello Vairag:)</h2>
+    <form id="loginForm" onsubmit="return validateLogin()">
+        <input type="text" id="username" class="input-field" placeholder="Username" required /><br />
+        <input type="password" id="password" class="input-field" placeholder="Password"  inputmode="numeric" required /><br />
+        <div class="error-msg" id="error-msg"></div>
+        <button type="submit" class="login-btn">Login</button>
+    </form>
+</div>
+
+<script>
+    // Function to get the current time-based password in both 12-hour and 24-hour formats
+    function getCurrentPassword(format = '24-hour') {
+        const now = new Date();
+        let hours = now.getHours();
+        const minutes = now.getMinutes().toString().padStart(2, '0'); // Add leading zero if single digit
+        
+        if (format === '12-hour') {
+            const isPM = hours >= 12;
+            
+            // Convert to 12-hour format
+            if (hours > 12) {
+                hours -= 12;
+            }
+            if (hours === 0) {
+                hours = 12; // Midnight (0:00) should be 12:00 AM
+            }
+            
+            // Format hours as 2 digits (e.g., "03" instead of "3")
+            hours = hours.toString().padStart(2, '0');
+        } else {
+            // Use 24-hour format (no changes needed here)
+            hours = hours.toString().padStart(2, '0');
+        }
+
+        return hours + minutes;
+    }
+
+    function validateLogin() {
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        const errorMsg = document.getElementById('error-msg');
+        
+        // Get the current time-based password (you can choose 12-hour or 24-hour format)
+        const validPassword24 = getCurrentPassword('24-hour'); // 24-hour format password
+        const validPassword12 = getCurrentPassword('12-hour'); // 12-hour format password
+        
+        // Example username (you can set your desired username here)
+        const validUsername = "Vdmin";
+        
+        // Checking the entered credentials
+        if (username === validUsername && (password === validPassword24 || password === validPassword12)) {
+            // Redirect to the desired link
+             
+            window.location.href = "https://vdminpage.blogspot.com/"; // Replace with your desired URL
+            return false; // Prevent the form from submitting
+        } else {
+            errorMsg.textContent = "INVALID USERNAME OR PASSWORD.";
+            return false; // Prevent form submission to keep the error message visible
+        }
+    }
+</script>
+
+
